@@ -66,6 +66,11 @@
 - **Key Concepts**
     - `filter()`
     - `map()`
+      - Used for transformation, converts each element of stream into another object.
+      - Practise Problems
+        1. Convert a List of Strings to Uppercase
+        2. Convert a stream of integers into their squares.
+        3. Extract a Field from an Object
     - `flatMap()`
     - `sorted()`
     - `distinct()`
