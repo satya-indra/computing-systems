@@ -643,3 +643,149 @@ Below is a comprehensive list of additional problems for each topic in your Java
     Design and implement a distributed logging system where log messages from multiple applications are aggregated into a central repository with fault tolerance and real-time monitoring. Provide a detailed design report of your solution.
 
 ---
+
+### **Day 22: Final Project: Multi-Threaded File Scanner with GUI**
+
+This exercise is structured progressively so that each subproblem builds on the previous one, ultimately leading to a complete multi-threaded file scanner with a GUI.
+
+---  
+
+## **📌 Problem Statement**
+Build a **multi-threaded file scanner** that searches for files based on conditions (e.g., name contains "bob" or size is between 10kB-100kB) and provides a GUI to interact with it. The scanner should evolve from a **single-threaded** implementation to a **scalable multi-threaded** solution with a **responsive GUI** and a **cancel option**.
+
+---
+
+## **🛠️ Sub-Problems & Step-by-Step Approach**
+
+### **🟢 Phase 1: Basic File Scanner (Single Threaded)**
+📌 **Goal:** Implement a simple file scanner that searches a folder for matching files.
+
+1️⃣ **Write a single-threaded program** to scan a folder and find files that match a condition.
+- Take **folder path** as input.
+- Search for **files containing "bob" in the name** OR **files between 10kB-100kB**.
+- Print results and measure execution time.
+
+**📝 Expected Outcome:** A working **single-threaded file scanner** that prints file paths.
+
+---
+
+### **🟡 Phase 2: Introducing Multi-Threading (Fixed Threads)**
+📌 **Goal:** Improve performance by using **two threads**.
+
+2️⃣ Modify the program to **split the work** between **two threads**.
+- Divide the files between **Thread 1** and **Thread 2**.
+- Ensure each thread scans a different part of the directory.
+- Print results and measure execution time.
+- Compare speed with the single-threaded version.
+
+**📝 Expected Outcome:** **Faster execution** and understanding of how **multiple threads** can process files.
+
+---
+
+### **🟠 Phase 3: Dynamic Thread Pool for Scalability**
+📌 **Goal:** Scale the program using a **variable number of threads** dynamically.
+
+3️⃣ Modify the scanner to use an **ExecutorService (Thread Pool)**.
+- Create a **configurable thread pool**.
+- Assign each folder scan as a separate task.
+- Prevent **overlapping** or **duplicate processing**.
+- Handle **large directories efficiently**.
+
+🔍 **Challenges to Address:**
+- **Thread starvation:** Some threads may be waiting indefinitely.
+- **Duplicate file scanning:** Ensure the same file isn’t scanned twice.
+
+**📝 Expected Outcome:** A **scalable, multi-threaded** file scanner that adapts to system load.
+
+---
+
+### **🔴 Phase 4: Handling Synchronization & Shared Resources**
+📌 **Goal:** Ensure **thread safety** when multiple threads access shared resources.
+
+4️⃣ Use **concurrent collections (`ConcurrentHashMap`)** to store scanned file paths.
+- Prevent **race conditions** when multiple threads modify shared data.
+- Ensure **efficient synchronization** using `ReentrantLock` or `synchronized`.
+
+🔍 **Challenges to Address:**
+- **Data corruption** if multiple threads modify the same list.
+- **Performance bottlenecks** due to excessive locking.
+
+**📝 Expected Outcome:** A **thread-safe multi-threaded scanner** that prevents duplicate processing.
+
+---
+
+### **🟣 Phase 5: Adding GUI for User Interaction**
+📌 **Goal:** Create a **basic GUI** with user input and background scanning.
+
+5️⃣ Build a **Java Swing / JavaFX** GUI with:
+- An **editable text field** for folder selection.
+- A **start button** to trigger the scan.
+- A **display area** to show search results.
+- Ensure the UI **remains responsive** while scanning.
+
+🔍 **Challenges to Address:**
+- **Long-running tasks freezing the UI.**
+- **Properly updating the UI from background threads.**
+
+**📝 Expected Outcome:** A **GUI-based file scanner** that runs in the background without freezing.
+
+---
+
+### **🟤 Phase 6: Adding a Cancel Button (Thread Interruption)**
+📌 **Goal:** Allow users to **cancel the scan** at any time.
+
+6️⃣ Add a **Cancel Button** to **stop the scanning process mid-way**.
+- Use **thread interruption (`Thread.interrupt()`)** to stop active threads.
+- Ensure the program **gracefully shuts down** ongoing tasks.
+
+🔍 **Challenges to Address:**
+- **Properly handling interrupted tasks.**
+- **Avoiding resource leaks when stopping mid-way.**
+
+**📝 Expected Outcome:** A **fully interactive GUI** that lets users start and cancel file scanning.
+
+---
+
+### **🟢 Bonus Challenge: Performance Testing & Optimization**
+📌 **Goal:** Fine-tune performance for **large directories** and **many threads**.
+
+7️⃣ Experiment with:
+- Different **thread pool sizes** (`FixedThreadPool`, `CachedThreadPool`).
+- Optimizing **I/O-bound** operations.
+- Handling **1,000+ files efficiently**.
+
+🔍 **Key Learnings:**
+- Difference between **CPU-bound** and **I/O-bound** multithreading.
+- Understanding **bottlenecks** in concurrent execution.
+
+**📝 Expected Outcome:** A **high-performance file scanner** with optimal thread utilization.
+
+---
+
+## **🎯 Final Deliverable:**
+A **fully functional multi-threaded file scanner with GUI** that:  
+✅ Scans folders **efficiently** using **multiple threads**.  
+✅ Uses **thread-safe collections** to store results.  
+✅ Has a **GUI** that remains **responsive** during scanning.  
+✅ Supports **cancellation** while scanning.  
+✅ Can handle **large file directories** efficiently.
+
+---
+
+## **💡 Key Concepts Covered in This Exercise:**
+- **Thread Creation** (`Thread` & `Runnable`).
+- **Thread Pools & Executors** (`ExecutorService`).
+- **Synchronization & Thread Safety** (`ReentrantLock`, `ConcurrentHashMap`).
+- **Parallel Processing** (Splitting work across multiple threads).
+- **Java Swing / JavaFX UI Updates from Threads**.
+- **Thread Interruption & Graceful Shutdown**.
+
+---
+
+## **🚀 Why This Exercise?**
+This hands-on project will give you **practical experience** in Java concurrency and **real-world challenges** like:  
+🔹 Deadlocks & race conditions.  
+🔹 Thread synchronization & performance optimization.  
+🔹 GUI-Thread interaction & handling long-running tasks.
+
+---
