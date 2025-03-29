@@ -1,4 +1,4 @@
-package org.example.multithreading.introduction_threads_and_runnable.print_numbers_alternatively;
+package org.example.multithreading.topic_1_introduction_threads_and_runnable.print_numbers_alternatively;
 
 public class PrintNumbersAlternativelyUsingThreadClass {
     int count = 0;

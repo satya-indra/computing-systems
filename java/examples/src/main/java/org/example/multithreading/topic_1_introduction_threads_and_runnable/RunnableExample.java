@@ -1,4 +1,4 @@
-package org.example.multithreading.introduction_threads_and_runnable;
+package org.example.multithreading.topic_1_introduction_threads_and_runnable;
 
 import java.util.stream.IntStream;
 
