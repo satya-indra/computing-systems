@@ -88,10 +88,21 @@ This study plan is designed to help you understand and master the Java Stream AP
 ### Interview Questions
 - What is the difference between `map()` and `flatMap()` in streams?
 - How would you sort a stream of custom objects?
+  - Using comparator ? 
 - In what scenarios might `distinct()` not behave as expected?
+  - when hashcode and equals method are not proper.
+  - when stream is modified after calling distinct.
+  - In parellel streams, elements might be processed in different threads, other threads may not know the presence of same object in other threads.
+  - In complex nested objects, as equals method checks only top level object.
 - Can you explain how `limit()` and `skip()` work in a stream pipeline?
-- How does chaining multiple intermediate operations affect stream processing?
-
+  - Help in slicing the stream. Use limit(n) for performance when working with large or infinite streams. Use skip(n) carefully, as skipping too many elements can lead to an empty stream. 
+- Stream best practises ? How does chaining multiple intermediate operations affect stream processing?
+  - Streams are lazy, meaning intermediate operations don’t execute immediately. They are only evaluated when a terminal operation is called.
+  - Elements flow through the pipeline one-by-one, not in batches. This means each element is processed through all intermediate steps before moving to the next element.
+  - Some operations can stop processing early (short-circuiting). This helps improve performance. Ex: findFirst() etc.
+  - Expensive operations should be placed later in the pipeline to minimize processing. Example: Filtering first is better than sorting first.
+  - Stream operations are fused, meaning the list is not processed multiple times. This reduces memory overhead and improves efficiency.
+  - If you use .parallelStream(), elements may not be processed in order. This can lead to unexpected behavior when using ordered operations like sorted().
 ---
 
 ## 3. **Terminal Operations**
