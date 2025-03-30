@@ -1,9 +1,9 @@
-package org.example.streams.intermediate_operations;
+package org.example.streams.intermediate_operations.flatmap;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class Problem_5 {
+public class FlatMapNestedListFlatteningExample {
     public static void main(String[] args) {
         // Deeply nested list (List of Objects)
         // We dont know the exact levels of nesting hence object

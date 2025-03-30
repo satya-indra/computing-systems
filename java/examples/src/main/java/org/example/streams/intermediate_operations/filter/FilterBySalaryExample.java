@@ -1,4 +1,4 @@
-package org.example.streams.intermediate_operations;
+package org.example.streams.intermediate_operations.filter;
 
 import org.example.streams.models.Employee;
 
@@ -11,7 +11,7 @@ import java.util.List;
  *  Sort names in natural order,
  *  Collect to List
  */
-public class Problem_9 {
+public class FilterBySalaryExample {
     public static void main(String[] args) {
         List<Employee> empList = Employee.getSampleEmployees();
 
