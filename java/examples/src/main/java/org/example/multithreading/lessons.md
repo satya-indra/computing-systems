@@ -10,7 +10,7 @@ Below is a comprehensive list of additional problems for each topic in your Java
 
 ## **Week 1: Fundamentals of Concurrency**
 
-### **Day 1: Introduction to Threads & Runnable Interface**
+### **Topic 1: Introduction to Threads & Runnable Interface**
 
 #### Easy
 1. **Basic Thread Creation:**  
@@ -40,13 +40,25 @@ Below is a comprehensive list of additional problems for each topic in your Java
 
 ---
 
-### **Day 2: Thread Lifecycle & Thread States**
+### **Topic 2: Thread Lifecycle & Thread States**
+
 
 #### Easy
 1. **State Logger:**  
    Write a program that creates a thread and prints its state before start, while running, and after termination.
 2. **Sleep State Observation:**  
    Create a thread that sleeps for 1 second, logging its state before sleep, during sleep, and after waking.
+   ## **💡 Thread Lifecycle Table**
+   | **State** | **Cause** | **Transition To** |
+   |-----------|----------|------------------|
+   | `NEW` | `new Thread()` | `RUNNABLE` (after `start()`) |
+   | `RUNNABLE` | `start()` | `BLOCKED`, `WAITING`, `TIMED_WAITING`, or `TERMINATED` |
+   | `BLOCKED` | `synchronized` | `RUNNABLE` (after lock release) |
+   | `WAITING` | `wait()` | `RUNNABLE` (after `notify()`) |
+   | `TIMED_WAITING` | `sleep()`, `join(timeout)` | `RUNNABLE` (after timeout) |
+   | `TERMINATED` | Thread completes | Cannot transition |
+
+---
 3. **Interrupt and State:**  
    Start a thread, interrupt it while sleeping, and print its state immediately after interruption.
 4. **State in run():**  
@@ -288,7 +300,7 @@ Below is a comprehensive list of additional problems for each topic in your Java
 1. **Basic ReentrantLock:**  
    Write a program that uses a `ReentrantLock` to protect a critical section incrementing a counter.
 2. **Try-Finally Usage:**  
-   Implement a simple program that demonstrates correct lock acquisition and release using a try/finally block.
+   Implement a simple program that demonstrates correct lock acquisition and relase using a try/finally block.
 3. **tryLock() Demo:**  
    Create a program that uses `tryLock()` to attempt to acquire a lock and prints whether it was successful.
 4. **Lock Logging:**  

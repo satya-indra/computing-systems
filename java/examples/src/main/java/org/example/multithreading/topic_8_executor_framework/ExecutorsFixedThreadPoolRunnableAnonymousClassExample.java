@@ -8,6 +8,7 @@ public class ExecutorsFixedThreadPoolRunnableAnonymousClassExample {
         ExecutorService ex = Executors.newFixedThreadPool(3);
 
         for (int i = 0; i < 5; i++) {
+            // producer main thread
             ex.submit(() -> {
                 System.out.println("Hello from " + Thread.currentThread().getName());
             });
